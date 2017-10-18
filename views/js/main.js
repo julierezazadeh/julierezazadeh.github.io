@@ -406,14 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-	  // Changed querySelector to getElementById because https://jsperf.com/getelementbyid-vs-queryselector/25 I wanted to see if this would allow the program to run faster, and this website proved that it would
-        document.getElementById("#pizzaSize").innerHTML = "Small";
+        document.querySelector("#pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.getElementById("#pizzaSize").innerHTML = "Medium";
+        document.querySelector("#pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.getElementById("#pizzaSize").innerHTML = "Large";
+        document.querySelector("#pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -425,7 +424,7 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.getElementById("#randomPizzas").offsetWidth;
+    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
     // Changes the slider value to a percent width
@@ -499,16 +498,14 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
-   // everytime a position is updated frame increases by 1, this doesn't effect the FPS
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // items is storing all of the pizzas on the page? Because mover is a class name given to the pizzas in the background
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
     // document.body.scrollTop is no longer supported in Chrome.
 	
-	// Removed document.body.scrollTop from the scrollTop variable due to this? ^^
+
     var scrollTop = document.documentElement.scrollTop;
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
@@ -531,11 +528,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  //for (var i = 0; i < 200; i++) {
-	  
-	//Why is it 200?, this create all the pizza objects but they're are most definitely less than 200.. wonder if doing "items.length" will allow it to run only for the amount of items on the page?  
-	for (var i = 0; i < items.length; i++) {  
-	  
+  for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -543,7 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById("#movingPizzas1").appendChild(elem);
+    document.querySelector("#movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
