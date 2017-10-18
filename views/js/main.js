@@ -498,13 +498,17 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
+   // everytime a position is updated frame increases by 1, this doesn't effect the FPS
   frame++;
   window.performance.mark("mark_start_frame");
 
+  // items 
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
     // document.body.scrollTop is no longer supported in Chrome.
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	
+	// Removed document.body.scrollTop from the scrollTop variable due to this? ^^
+    var scrollTop = document.documentElement.scrollTop;
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
@@ -526,7 +530,11 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  //for (var i = 0; i < 200; i++) {
+	  
+	//Why is it 200?, this create all the pizza objects but they're are most definitely less than 200.. wonder if doing "items.length" will allow it to run only for the amount of items on the page?  
+	for (var i = 0; i < items.length; i++) {  
+	  
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
