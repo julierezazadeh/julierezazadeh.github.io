@@ -450,10 +450,10 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.getElementsByTagName()(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.getElementsByTagName()(".randomPizzaContainer")[i], size);
-      var newwidth = (document.getElementsByTagName()(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.getElementsByTagName()(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < document.getElementsByTagName(".randomPizzaContainer").length; i++) {
+      var dx = determineDx(document.getElementsByTagName(".randomPizzaContainer")[i], size);
+      var newwidth = (document.getElementsByTagName(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      document.getElementsByTagName(".randomPizzaContainer")[i].style.width = newwidth;
     }
   }
 
@@ -504,7 +504,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   // items is storing all of the pizzas on the page? Because mover is a class name given to the pizzas in the background
-  var items = document.getElementsByTagName()('.mover');
+  var items = document.getElementsByTagName('.mover');
   for (var i = 0; i < items.length; i++) {
     // document.body.scrollTop is no longer supported in Chrome.
 	
