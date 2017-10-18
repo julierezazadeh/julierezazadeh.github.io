@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //for (var i = 0; i < 200; i++) {
 	  
 	//Why is it 200?, this create all the pizza objects but they're are most definitely less than 200.. wonder if doing "items.length" will allow it to run only for the amount of items on the page?  
-	for (var i = 0; i < items.length; i++) {  
+	for (var i = 0; i < 200; i++) {  
 	  
     var elem = document.createElement('img');
     elem.className = 'mover';
