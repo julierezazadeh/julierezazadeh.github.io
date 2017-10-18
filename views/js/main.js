@@ -450,10 +450,10 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.getElementsByTagName(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.getElementsByTagName(".randomPizzaContainer")[i], size);
-      var newwidth = (document.getElementsByTagName(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.getElementsByTagName(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
+      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
     }
   }
 
@@ -504,7 +504,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   // items is storing all of the pizzas on the page? Because mover is a class name given to the pizzas in the background
-  var items = document.getElementsByTagName('.mover');
+  var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
     // document.body.scrollTop is no longer supported in Chrome.
 	
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //for (var i = 0; i < 200; i++) {
 	  
 	//Why is it 200?, this create all the pizza objects but they're are most definitely less than 200.. wonder if doing "items.length" will allow it to run only for the amount of items on the page?  
-	for (var i = 0; i < 200; i++) {  
+	for (var i = 0; i < items.length; i++) {  
 	  
     var elem = document.createElement('img');
     elem.className = 'mover';
