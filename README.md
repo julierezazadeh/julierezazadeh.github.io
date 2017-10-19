@@ -38,7 +38,7 @@ To allow for successful completion of this section I've changed a few things in 
 
 
 
-#### Part 2: Optimize Frames per Second in pizza.html
+### Part 2: Optimize Frames per Second in pizza.html
 
 To optimize views/pizza.html, I have modified views/js/main.js until the frames per second rate reached 60 fps or higher when scrolling. You will find instructive comments in main.js. 
 
