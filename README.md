@@ -1,55 +1,68 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+- Julie Rezazadeh
 
-To get started, check out the repository and inspect the code.
+The challenge of this project was to optimize the online portfolio given to us for speed! 
+In particular, we were to optimize the critical rendering path and make the page given render as quickly as possible by applying the techniques that we've learned. 
 
-### Getting started
 
-#### Part 1: Optimize PageSpeed Insights score for index.html
+### Part 1: Optimize PageSpeed Insights score for index.html
 
-Some useful tips to help you get started:
+The first specification in the rubric states that you need your index.html page to achieve a PageSpeed score of at least 90 for Mobile and Desktop.
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
+To allow for an easy pageSpeed test, I've used github's webpages to host my project directly from my github repository.
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ./ngrok http 8080
-  ```
+Steps to check the pageSpeed score on mobile and desktop
 
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
+1. In your search bar, navigate to https://developers.google.com/speed/pagespeed/insights/
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+2. Upon entering this site, you will see a textbox field that asks you to Enter a webpage URL
+
+3. The exact site name that you will be confirming has the correct pageSpeed of 90 is
+ julierezazadeh.github.io
+
+4. Once you've hit Analyze, the page will then provide you will the Mobile and Desktop pageSpeed (which are kept in two separate tabs)  
+
+This score represents how quickly your page has been ran. 
+
+
+
+
+To allow for successful completion of this section I've changed a few things in the index.html file that was provide.
+-  All images on this page have been compressed to a smaller file size. (http://compresspng.com/ , http://compressjpeg.com/)
+-  Asynchronous loading all of the <script> tags of JavaScript using the 'async' tag 
+-  Inlined all the CSS that was in the print.css and style.css folder for faster pageSpeed
+-  Minified all the files for distribution mode
+
+
 
 #### Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To optimize views/pizza.html, I have modified views/js/main.js until the frames per second rate reached 60 fps or higher when scrolling. You will find instructive comments in main.js. 
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
+Steps to check to FPS
+- Navigate to julierezazadeh.github.io to check the FPS 
+- Click the link that reads 'Cam's Pizzeria', this will navigate to the page that needs a specific FPS score.
+- ctrl-shift-i to open dev tools, or right click on the page and click inspect.
+- Select the Console tab to view the Average scripting time to generate last 10 frames and time to generate pizzas on load. 
+- In the performance tab, start recording the page. If you're unfamiliar with how to record check out this website! https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference
+- Once you've finished recording the scrolling of the page, you will find some useful information that dev tools provides
+- Look for the green bars to check the FPS!
 
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
+To allow for successful completion of the section I've outlined a few of the changes I've made in this file to help reach the 60FPS mark. 
+(Found in the views/js/main.js file)
+- Changing all querySelectors to getElementById and querySelectorAll to getElementsByClassName because I came across multiple articles stating that in most cases this will allow the program to run faster (https://jsperf.com/getelementbyid-vs-queryselector)
+- Removed deprecated properties
+- Removed some properties out of the for loops they were in because there wasn't a point in having the same number loop x amount times. 
+- It appeared that the highest number of pizzas in the background that can be shown on the screen was 32, (8 across x 4 down) so I changed the for loop to only loop through the ones showing on the screen (32) instead of 200 which did extra work for no reason.
+- I also deleted or added some of the elem styles in the last for loop in the document to a .mover css class in pizza.html
 
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+
+
+
+
+
+
