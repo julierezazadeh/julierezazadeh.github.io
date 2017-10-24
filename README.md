@@ -21,7 +21,7 @@ Steps to check the pageSpeed score on mobile and desktop
 2. Upon entering this site, you will see a textbox field that asks you to Enter a webpage URL
 
 3. The exact site name that you will be confirming has the correct pageSpeed of 90 is
- julierezazadeh.github.io
+http://julierezazadeh.github.io/dist/
 
 4. Once you've hit Analyze, the page will then provide you will the Mobile and Desktop pageSpeed (which are kept in two separate tabs)  
 
